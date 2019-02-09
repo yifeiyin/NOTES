@@ -1,0 +1,5 @@
+Vim Syntax Highlighting
+
+https://stackoverflow.com/a/43302456/7318257
+
+Use #! at the beginning to indicate the file type.

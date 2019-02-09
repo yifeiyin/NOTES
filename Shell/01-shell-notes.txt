@@ -1,0 +1,35 @@
+Jun 18, 2018
+Yifei Yin at Hefei
+Copied from Notes.app
+
+Linux Commands
+pwd: print work directory 
+cd: change directory
+ls: list
+mkdir [name]: make directory
+cd ../../ or cd ../..
+wget [url]: download something
+rm [name]: remove
+rmdir [name]: remove directory
+rm -r [name]: “recursively”
+
+
+ls:
+-a all including hidden
+-l list format
+-al combined format
+—-help
+
+Sudo apt-get update: update file lists
+Sudo apt-get upgrade: actual install
+Sudo respi-config
+nano: text editor
+
+sudo：super user do
+
+RESTARTS AND SHUTDOWN
+sudo reboot
+sudo shutdown -r/-h now
+
+
+GPIO General purpose input output

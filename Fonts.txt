@@ -1,0 +1,7 @@
+Fonts
+
+Terminal: Menlo
+
+macOS IDLE: Monaco
+
+Windows IDLE: Consolas
