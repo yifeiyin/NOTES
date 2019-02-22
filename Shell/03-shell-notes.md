@@ -12,8 +12,9 @@ Possible good book: [Bourne Shell Scripting Tutorial](https://www.shellscript.sh
 
 Things To Look Into
 -------------------
-- sed
-- grep
+- `sed`
+- `grep`
+- `cut`: text slicing
 
 
 Single, Double Quotes
