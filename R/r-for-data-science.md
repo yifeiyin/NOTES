@@ -24,7 +24,7 @@
 - Package: tidyverse
     - `install.packages("tidyverse")` to install
     - `library(tidyverse)` to include it
-    - `tidyverse_undate()` to update packages
+    - `tidyverse_update()` to update packages
 - Other packages
     - `nycflights13`: airline flights
     - `gapminder`: world development
