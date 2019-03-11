@@ -123,4 +123,62 @@ JavaScript Notes
 - Command Operator: just like C
 
 ### Comparisons
-- 
+- `> < >= <= == !=`
+    - For strings, it is comparing alphabetical order (more strictly, unicode order)
+    - Will convert values to numbers
+    - `==` treats undefined and null differently: they only equal to themselves, nothing else
+
+- `===`
+    - Compare without type conversions
+    - `null === undefined` will be false too
+
+### Interactions
+- alert
+    - `alert(message);`
+- prompt
+    - `result = prompt(title[, default]);`
+    - if cancelled, will get null
+    - For the sake of looking good in IE, always provide default
+- confirm
+    - `result = confirm(question);`
+    - Will get true/false
+
+### Conditions
+- `if (...)` `else` `else if`
+- `cond? block1 : block2`
+
+### Logical Opeartors
+- Will use short circuit evaluation
+- `||` OR
+    - Also finds the first truthy value
+- `&&` AND
+    - Also finds the first falsy value
+- `!` NOT
+    - `!! ...` <-> `Boolean(...)`
+
+### Loops
+- `while` `do ... while`
+- `for(..; ..; ..)`
+- `continue` `break`
+- `break <labelName>`: add a labelName in front of the loop statement
+- `continue <labelName>`: same thing
+
+### Switch
+- Takes any type for the switch argument
+- Does not supply break statement, need to write it out
+- CASE MATTERS, works like `===`
+
+### Functions
+- functions
+    ```js
+    function functionName(arg1, arg2 = "default value") {
+        return 1;
+        return; // returning undefined
+        // No return statement will also return undefined
+    }
+    ```
+- If not all arguments are provided, the missing parameter will be undefined
+
+
+
+
