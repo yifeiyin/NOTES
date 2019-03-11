@@ -89,4 +89,38 @@ JavaScript Notes
     - `'(empty string)', 0, null, undefined, NaN` are false
     - all others are true
 
+### Operators
+- unary, binary, operand
+- Binary `+`
+    - When one of the operand is string: will convert the other one to string and concatenate
+    - Else, will convert all to numbers and do math addition
+- Unary `+`
+    - Will convert the operand to numbers, equivalent to `Number(...)`
+    ```r
+    let apples = "2";
+    let oranges = "3";
 
+    // both values converted to numbers before the binary plus
+    alert( +apples + +oranges ); // 5
+    ```
+
+- Supports Chain Assignments
+
+- `%` Remainder
+- `**` Exponential
+- `++` `--`
+
+- Bitwise Operators
+    - and `&`
+    - or `|`
+    - xor `^`
+    - not `~`
+    - left shift `<<`
+    - right shift `>>`
+    - zero-fill right shift `>>>`
+
+- `+= -= etc`
+- Command Operator: just like C
+
+### Comparisons
+- 
