@@ -11,7 +11,7 @@ JavaScript Notes
     - will load outside script and ingore content inside the tag
 
 - Semicolons
-    - Can be omitted in most cases for standalone statements
+    - Can be omitted in most cases for standalone statements (automatic semicolon insertion)
     - Nonetheless, putting semicolons ALL THE TIME is recommended
 
 - Comments
@@ -56,7 +56,7 @@ JavaScript Notes
     - Also includes `Infinity, -Infinity, NaN`
 - String
     - Double quotes and single quotes are the same
-    - *Backticks* allow evaluation exists, use `${...}`: `alert( `1 + 1 = ${1 + 1}` );`
+    - **Backticks** allow evaluation exists, use `${...}`: `alert( `1 + 1 = ${1 + 1}` );`
 - Boolean
     - `true` `false`
 - "null"
@@ -80,7 +80,7 @@ JavaScript Notes
     | true/false   | 1 or 0                        |
     | string       | Whitespaces are striped, NaN if error |
 
-- Almost all math operations will convert values to numbers, *besides* `+`
+- Almost all math operations will convert values to numbers, **besides** `+`
     ```js
     1 + '2' // '12'
     '1' + 2 // '12'
@@ -169,7 +169,7 @@ JavaScript Notes
 - CASE MATTERS, works like `===`
 
 ### Functions
-- functions
+- Functions *Declaration*
     ```js
     function functionName(arg1, arg2 = "default value") {
         return 1;
@@ -179,6 +179,55 @@ JavaScript Notes
     ```
 - If not all arguments are provided, the missing parameter will be undefined
 
+- Function *Expression*
+    ```js
+    let functionName = function(parameters, here) { ... };
+    ```
+- When to print a function expression, the code inside the function will be printed
+- **Important Example**
+    ```js
+    function ask(question, yes, no) {
+      if (confirm(question)) yes()
+      else no();
+    }
 
+    ask(
+      "Do you agree?",
+      function() { alert("You agreed."); },
+      function() { alert("You canceled the execution."); }
+    );
+```
 
+- Function **Definitions** Can appears AFTER usage, as long as they are defined
+- Arrow Functions
+    ```js
+    let plus = function(x, y) { return x; };
+    // Simply to:
+    let plus = (x, y) => x + y;
+    //         |<----------->|
+
+    // If no parameters, leave the parehtheses empty
+    let hello = () => alert("hello");
+
+    // For multi-line functions, use curly braces and return statements
+    let sum = (a, b) => {
+        let result = a + b;
+        return result;
+    }
+    ```
+
+## Code Quality
+### Debugging in Chrome
+- Chrome environment
+- `debugger;`
+- `console.log(msg);`
+- break points, continue to here, watch expressions, etc
+
+### Coding Style
+- Always use semicolon
+- Use spaces correctly
+- Put helper functions at the end
+- There are linters available
+
+### Automated Testing with Mocha
 
