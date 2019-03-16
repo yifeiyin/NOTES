@@ -294,6 +294,29 @@ JavaScript Notes
 
 - for-in loop
     ```js
-    for (
+    for (let key in object) {
+        ...
+    }
+    ```
+- Order of Keys
+    - Integer properties are ordered increasingly. Others are ordered by creation order
+    - Integer properties are the strings that can be converted to-and-from int without change
+    - Add a "+" before the int in the string can make it not become integer property
 
+- "Mutable vs Immutable": (Are these the right vocabulary in js?)
+    - Primitive types are immutable, copied as a whole
+    - Objects are copied **by reference**
+- Equal Signs on Objects
+    - `===` and `==` has no difference when used on objects:
+    - They both check if two references are pointing at the same object
+- Cloning
+    - Use a for loop: `let src = {...}; let clone = {}; for (let k in src) { clone[k] = src[k]; }`
+    - Use `Object.assign`: 
+        - Of form `Object.assign(dest[, src1, src2, src3...])`, returns `dest`
+        - Overwrites existing properties
+        - `let clone = Object.assign({}, user);`
+        - `Object.assign(clone, user);`
+    - For deep cloning, use library `lodash`, method name `_.cloneDeep(obj)`
+
+### Garbage Collection
 
