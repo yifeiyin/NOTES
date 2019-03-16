@@ -229,5 +229,71 @@ JavaScript Notes
 - Put helper functions at the end
 - There are linters available
 
-### Automated Testing with Mocha
+### Automated Testing
+- BDD: Bahavior Driven Development: Write test cases first, then write code
+- Mocha: Testing Framework, Sample code:
+    ```js
+    describe("pow", function() {
+
+      it("raises to n-th power", function() {
+        assert.equal(pow(2, 3), 8);
+      });
+
+    });
+    ```
+- Other Frameworks:
+    - Chai: provide different kinds of assertions
+    - Sinon: a library to spy over functions
+
+### Polyfills
+- Not all engines has all features
+- Babel, transpiler
+
+
+
+
+## Objects
+
+### Basics
+- Created with `let a = { "key, type string": "value, any type" };`
+    - Also, less used form `let a = new Object();`
+- Property values:
+    - Add using `a.name = "Jack";`
+    - Remove using `delete a.name;`
+- Multiword property names must be quoted: `let b = { key1: 1, "key 2": 2 };`
+- Square Notation: Also, this allows to use different keys on demand
+    ```js
+    let user = {};
+    user["likes birds"] = true;
+
+    let key = "likes birds";
+    alert(user[key]);
+    ```
+- Computed Properties
+    ```js
+    let fruit = prompt("Which fruit to buy?", "apple");
+
+    let bag = {
+        [fruit]: 5,
+    //  ^-----^
+    };
+    ```
+
+- Property Value Shorthand
+    ```js
+    let user = {
+        name,       // Same as   name: name
+        age = 30,
+        gender,     // Same as   gender: gender
+    };
+    ```
+
+- Property Existence Check
+    - Trying access property that is not set will get `undefined`
+    - Check use `=== undefined` or `key in object`
+
+- for-in loop
+    ```js
+    for (
+
 
