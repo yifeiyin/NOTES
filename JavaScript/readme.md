@@ -196,7 +196,7 @@ JavaScript Notes
       function() { alert("You agreed."); },
       function() { alert("You canceled the execution."); }
     );
-```
+    ```
 
 - Function **Definitions** Can appears AFTER usage, as long as they are defined
 - Arrow Functions
