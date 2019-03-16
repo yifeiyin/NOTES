@@ -255,7 +255,7 @@ JavaScript Notes
 ## Objects
 
 ### Basics
-- Created with `let a = { "key, type string": "value, any type" };`
+- Created with `let a = { "key, type string or symbol": "value, any type" };`
     - Also, less used form `let a = new Object();`
 - Property values:
     - Add using `a.name = "Jack";`
@@ -319,4 +319,28 @@ JavaScript Notes
     - For deep cloning, use library `lodash`, method name `_.cloneDeep(obj)`
 
 ### Garbage Collection
+- JavaScript is smart about garbage collection: circular references are taken care of
+
+### Symbol Type
+- Symbol value repersents a unique identifier, will never be the same
+    - Can give it a name for debugging purpose: `let s = symbol("name here");`
+    - Can be used for object keys so that they will not collide with customized keys
+    - Note: Use square brackets in object literal: `let id = Symbol(); let user = { name: "A", [id]: 123 };`
+- Symbols are skipped in for...in loop
+    - But `Object.assign` will keep the symbols
+
+- Global Symbols
+    - Use this feature when: different parts of the application want to have the "same" symbol by name
+    - Called "global symbol registry", these symbols are called "global symbols"
+    - To create or read a symbol, use `Symbol.for(key)`. If not exists, will create and return; if exists, will returns it
+    - Use `Symbol.keyFor(symbol)` to do the reverse: get the name by supplying the symbol; Non-global symbols will not work
+
+- System Symbols
+    - Example: `Symbol.toPrimitive` `Symbol.iterator`
+    - Will use later
+
+- Other things
+    - `Object.getOwnPropertySymbols(obj)`
+    - `Reflect.ownKeys(obj)`
+
 
