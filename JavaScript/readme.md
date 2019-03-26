@@ -343,4 +343,65 @@ JavaScript Notes
     - `Object.getOwnPropertySymbols(obj)`
     - `Reflect.ownKeys(obj)`
 
+### Object methods, "this"
+- Adding methods to objects:
+    ```js
+    let user = {
+        sayHi: function() {
+            alert("hi");
+        },
+        name: "Name",
+
+        // Short Hand
+        sayHi2() {
+            alert("hi");
+        }
+    }
+    ```
+- To get the property of the object itself, use keyword `this`
+- Technically, can use the outside variable name to reference self, too (But don't do it)
+- `this` has no value until the function is called
+- When `this` is unbounded, ie called outside of an object, it will behave differently without "use strict"
+- Note:
+    ```js
+    (user.name == "John" ? user.hi : user.bye)(); // Error!
+    ```
+    - Because `user.hi` is outside, when it is called, no objects are provided
+    - the dot `.` returns not a function, but a value of the special *Reference Type*
+    - The only way to get it called correctly is to use `obj.method()` or `obj['method']()`
+- Arrow functions takes `this` from the outer scope
+
+### Object to Primitive Conversion
+- Evaluated as:
+    - bool: true; objects are always true
+    - numberic; use when subtract objects or apply math functions
+    - string; happens like `alert(obj)`
+
+- Hints
+    - The object may be used by "ToPrimitive" algorithm to convert it to other types
+    - "string"
+    - "number" (greater than, less than are using this too)
+    - "default" (happens when the operator is not sure what type to expect) (usually implemented the same as "number")
+
+- To do the conversion, it tries to find these methods
+    - Call `obj[Symbol.toPrimitive](hint)` if the method exists
+    - O/w, if hint is "string", call `obj.toString()` `obj.valueOf()` if exists
+    - O/w, (hint is "number" or "default"), call `obj.valueOf()` `obj.toString()` if exists
+
+- For exmaple:
+    ```js
+    let user = {
+      name: "John",
+      money: 1000,
+
+      [Symbol.toPrimitive](hint) {
+        alert(`hint: ${hint}`);
+        return hint == "string" ? `{name: "${this.name}"}` : this.money;
+      }
+    };
+    ```
+
+- The `ToPrimitive` method does not need to return the requested type, but it has to be a primitive type. Any additional (build-in) type conversion methods will apply if necessary.
+
+- In practice, it is often enough to implement only `obj.toString()` for debugging purpose
 
