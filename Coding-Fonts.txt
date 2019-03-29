@@ -1,0 +1,9 @@
+Mono Fonts For Coding
+
+I like: Menlo
+
+Terminal Default: Menlo
+
+Python IDLE Default
+    macOS: Monaco
+    Windows: Consolas
