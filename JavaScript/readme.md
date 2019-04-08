@@ -4,6 +4,40 @@ JavaScript Notes
 > 2019 March 10
 > Reading javascript.info
 
+<!-- TOC -->
+
+## Table of Contents
+1. [JavaScript Fundamentals](#javascript-fundamentals)
+    1. [Preliminaries](#preliminaries)
+    1. [Variables, Constants](#variables,-constants)
+    1. [Primitive Data Types](#primitive-data-types)
+    1. [Type Conversions](#type-conversions)
+    1. [Operators](#operators)
+    1. [Comparisons](#comparisons)
+    1. [Interactions](#interactions)
+    1. [Conditions](#conditions)
+    1. [Logical Opeartors](#logical-opeartors)
+    1. [Loops](#loops)
+    1. [Switch](#switch)
+    1. [Functions](#functions)
+1. [Code Quality](#code-quality)
+    1. [Debugging in Chrome](#debugging-in-chrome)
+    1. [Coding Style](#coding-style)
+    1. [Automated Testing](#automated-testing)
+    1. [Polyfills](#polyfills)
+1. [Objects](#objects)
+    1. [Basics](#basics)
+    1. [Garbage Collection](#garbage-collection)
+    1. [Symbol Type](#symbol-type)
+    1. [Object methods, "this"](#object-methods,-"this")
+    1. [Object to Primitive Conversion](#object-to-primitive-conversion)
+    1. [Constructor, "new" operator](#constructor,-"new"-operator)
+1. [Data Types](#data-types)
+    1. [Methods of Primitives](#methods-of-primitives)
+
+<!-- /TOC -->
+
+
 ## JavaScript Fundamentals
 
 ### Preliminaries
@@ -404,4 +438,50 @@ JavaScript Notes
 - The `ToPrimitive` method does not need to return the requested type, but it has to be a primitive type. Any additional (build-in) type conversion methods will apply if necessary.
 
 - In practice, it is often enough to implement only `obj.toString()` for debugging purpose
+
+### Constructor, "new" operator
+    ```js
+    function User(name) {
+        // this = {};    -- think of it this way
+        this.name = name;
+        this.isAdmin = false;
+        // return this;    -- think of it this way
+    }
+
+    let user = new User("Jack"); // (using `new`)
+    ```
+- Syntax-wise, the name of the constructor starts with a capital letter
+- Syntax-wise, the parentheses after `new` does not to be there if there is not arguments, but don't do it
+
+
+- `new` makes the following happens
+    - Create an empty object and assigned it to `this`
+    - Function body executes, usually adding/modifying properties to `this`
+    - return `this`
+
+- For creating more complex objects, can use this
+    ```js
+    let user = new function() {
+        this.name = "John";
+        this.isAdmin = false;
+        // ... More complex statements here ...
+    }
+    ```
+    - Explanation: `function() { ... }` creates a function; `new` operator adds the two implicit lines (see notes above); and the function gets correctly called
+
+- (Extra) Dual-syntax constructor: `new.target`
+    - Being used when want to make a function work with and without `new` operator (used in librarys)
+    - A special property called `new.target` is set to the function itself when it is called using `new`, empty otherwise
+    - In the function body, simply check `new.target` and do corresponding things
+
+- Return statements in constructors
+    - (Of course, it usually does not have a return statement)
+    - If `return` is called with a object, the object is returned
+    - If `return` is called with a primitive, the primitive is ingored and `this` object is returned
+
+
+
+## Data Types
+
+### Methods of Primitives
 
