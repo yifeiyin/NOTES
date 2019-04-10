@@ -1,6 +1,0 @@
-# Renaming Files (substitute plus sign with space)
-for file in *.pdf; do mv "$file" "$(echo $file | sed 's/+/ /g')"; done
-
-
-# https://superuser.com/questions/689441/how-do-i-create-a-url-file-on-os-x
-# Creating Internet Shortcut Script

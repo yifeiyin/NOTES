@@ -1,0 +1,58 @@
+{
+	"added_words":
+	[
+		"Yifei",
+		"Hefei",
+		"abductive",
+		"contrapositive",
+		"Scrapy",
+		"scrapy",
+		"Emmet",
+		"str",
+		"multi",
+		"indeterminism",
+		"color",
+		"Seatbelt",
+		"Contractualism"
+	],
+	"caret_extra_bottom": 2,
+	"caret_extra_top": 2,
+	"caret_extra_width": 1,
+	"caret_style": "phase",
+	"color_scheme": "Packages/Writing Color Scheme/Writing Color Scheme Light.tmTheme",
+	"create_window_at_startup": false,
+	"dictionary": "Packages/Dictionaries/English (Canadian).dic",
+	"fade_fold_buttons": false,
+	"font_face": "Menlo",
+	"font_options":
+	[
+		"no_italic"
+	],
+	"font_size": 15,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+	],
+	"ignored_words":
+	[
+		"Compatibilism",
+		"Consequentialism",
+		"Incompatibilism",
+		"Sober's",
+		"apps"
+	],
+	"line_padding_bottom": 0,
+	"line_padding_top": 0,
+	"open_files_in_new_window": true,
+	"rulers":
+	[
+		79,
+		85
+	],
+	"scroll_past_end": true,
+	"spell_check": true,
+	"theme": "Adaptive.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
+}

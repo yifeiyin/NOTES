@@ -2,8 +2,13 @@ Jun 18, 2018
 Yifei Yin at Hefei
 Copied from Notes.app
 
+> **WARNING: Archived Notes**
+>
+> These notes are no longer being maintained and are here for archive purpose only. Some usage may be deprecated in current standard.
+
+
 Linux Commands
-pwd: print work directory 
+pwd: print work directory
 cd: change directory
 ls: list
 mkdir [name]: make directory
