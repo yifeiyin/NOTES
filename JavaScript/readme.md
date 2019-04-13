@@ -34,8 +34,15 @@ JavaScript Notes
     1. [Constructor, "new" operator](#constructor,-"new"-operator)
 1. [Data Types](#data-types)
     1. [Methods of Primitives](#methods-of-primitives)
+    1. [Numbers](#numbers)
+        1. [How Number Looks Like](#how-number-looks-like)
+        1. [Number Object Methods](#number-object-methods)
+        1. [`Math` Rounding Methods](#`math`-rounding-methods)
+        1. [Number Related Functions](#number-related-functions)
+        1. [Other Math Functions](#other-math-functions)
 
 <!-- /TOC -->
+
 
 
 ## JavaScript Fundamentals
@@ -484,4 +491,46 @@ JavaScript Notes
 ## Data Types
 
 ### Methods of Primitives
+- Motivation: want primitive to have methods for easy access, but still need them to be light
+- Solution: when call method on a primitive, an "object wrapper" will be created then be destroyed.
+- The object for each primitive type are called: `String`, `Number`, `Boolean` and `Symbol`.
+    - For exmaple: `str.toUpperCase()` `num.toFixed(2)`
+- NOTES
+    - `Number(...); Boolean(...); etc` are fine to use
+    - `new Number(...); Boolean(...); etc` do NOT use. Do not try to create the temporary object wrapper object, confusing things will happen (ex. `let zero = new Number(0); zero == true; because it is an object`)
+    - `null` and `undefined` have no methods
+    - the JavaScript engine will optimize the process so no temporary object will be created
+
+### Numbers
+#### How Number Looks Like
+- Scientific notation: `3.2e100`, `6e-3`
+- Hex, binary, octal numbers: `0xff 0xFF` `0b1111 0B1010` `0o4567 0O77621`
+
+#### Number Object Methods
+- Note: To use methods directly on a number, use `(123).toString(36)` or `123..toString(2)`
+- `.toString(base)`
+    - Default is `10`, valid values are `2 .. 10`
+    - Use `num.toString(2)` for debug purpose
+    - Use `num.toString(36)` for making unique identifier (will use 0-1, A-Z)
+- `.toFixed(n)`
+    - Returns a string with number rounded to n-th decimal, with 0 added if necessary
+
+#### `Math` Rounding Methods
+- `Math.floor` makes it smaller
+- `Math.ceil` makes it bigger
+- `Math.round` rounds
+- `Math.trunc` getting rid of decimal part, not supported by IE
+
+#### Number Related Functions
+- `isNaN(value)`
+- `isFinite(value)`
+- (to strictly test numbers check out `Object.is(a, b)`)
+- `parseInt(str)` `parseFloat(str)`
+    - They will try to read numbers as much as possible
+    - Supports 2nd argument: `parseInt(str, radix)` radix = base to parse in
+
+#### Other Math Functions
+- `Math.random()` returns number in `[0, 1)`
+- `Math.max(...)` `Math.min(...)`
+- `Math.pow(base, power)`
 
