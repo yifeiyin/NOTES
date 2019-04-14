@@ -40,8 +40,19 @@ JavaScript Notes
         1. [`Math` Rounding Methods](#`math`-rounding-methods)
         1. [Number Related Functions](#number-related-functions)
         1. [Other Math Functions](#other-math-functions)
+    1. [Strings](#strings)
+        1. [Basic Accessing](#basic-accessing)
+        1. [Finding, Testing, Slicing](#finding,-testing,-slicing)
+        1. [Unicode Encoding](#unicode-encoding)
+    1. [Arrays](#arrays)
+        1. [Adding, Accessing, Finding Methods](#adding,-accessing,-finding-methods)
+        1. [Transforming Methods](#transforming-methods)
+        1. [Other Things](#other-things)
+    1. [Iterables](#iterables)
+    1. [Map, Set, WeakMap, WeakSet](#map,-set,-weakmap,-weakset)
 
 <!-- /TOC -->
+
 
 
 
@@ -533,4 +544,75 @@ JavaScript Notes
 - `Math.random()` returns number in `[0, 1)`
 - `Math.max(...)` `Math.min(...)`
 - `Math.pow(base, power)`
+
+### Strings
+- Single quotes, double quotes, backticks
+- Escape characters, also `\u00A9, \u{1F60D} for unicodes`
+#### Basic Accessing
+- `"abc".length == 3`
+- `mystr[3], mystr.charAt(3)`
+    - For `[..]` if out of range, will get undefined
+    - For `.charAt(..)` if out of range, will get empty string
+- `for (let char of mystr) { ... }`
+- `.toLowerCase()` `.toUpperCase()`
+#### Finding, Testing, Slicing
+- `.indexOf(substr [, startingPos])`, will return -1 if not found. Also `.lastIndexOf(...)`
+    - TRICK: Use bitwise or to test if a value is -1 or not: `mystr.~indexOf("test") <--> "if found"`
+- `includes` `startsWith` `endsWith`
+- `.slice(start [, end])` `.substring(start [, end])` `.substr(start [, length])`
+#### Unicode Encoding
+- `.codePointAt(pos)` returns the unicode number of the character at position pos in the string
+- String.fromCodePoint(code)` returns the character by providing unicode number
+- To "clean up" unicode characters, use `.normalize()`
+
+### Arrays
+- Syntax is like Python, also do not care about type
+- Also works with `let a = new Array(...)`, do not use
+- Use `.length` to get length
+- Supports `shift` `unshift` `push` `pop`, supports adding multiple items at a time
+- It is a kind of object
+- When printed, it is comma seperated values
+#### Adding, Accessing, Finding Methods
+- `.splice(index [deleteCount [elementToAdd ... ]]) -> itemRemovedAsArray`
+- `.slice(start [end])`
+- `arr.concat(arr1, arr2, ...)` Adds the arguments to the end of the `arr`
+    - If `Symbol.isConcatSpreadable` is set for the argument, it will be spreaded, otherwise, will add as a whole
+- `.indexOf` `.lastIndexOf` `.includes`
+- `.find(function (item, index, array) { .. })`, also `.findIndex(.. same thing ..)`
+    - item is the current item; index is current index; array is the whole array
+    - the function is applied to each element until there is one that is true, if so the item is returned; if not found, `undefined` will be returned
+    ```js
+        let users = [
+      {id: 1, name: "John"},
+      {id: 2, name: "Pete"},
+      {id: 3, name: "Mary"}
+    ];
+
+    let user = users.find(item => item.id == 1);
+    ```
+- `.filter( (item, index, array) => boolean )` returns a list
+#### Transforming Methods
+- `.map( (item, index, array) => newItem )` Applies a function to each element
+- `.sort( customizedSortingFunction -OR- default: StringComparsion )`
+    - The sorting function should return positive value if the first argument is bigger
+- `.reduce( (prevValue, item, index, array) => Number, initialValue)` also `.reduceRight(...)`
+- `.reverse()`
+- `string.split(byWhatString)` `arrOfString.join(useWhatStringAsGlue)`
+#### Other Things
+- `Array.isArray(object)` tests if an object is an array or not
+- Can provide `thisArg` to most array functions to provide `this` context
+
+### Iterables
+- When a `for..of` is call on an object
+    - the object needs to implement `Symbol.iterator`
+    - Such method will return a iterator which will be hold on to
+    - this iterator should have a `next` function which returns a `{ done: Boolean, value: any }`
+> NOTE: Array-like vs Iterable
+> Array-like: when an object has numbers as keys and has length property
+> Iterable: when an object has `Symbol.iterator` implemented
+- `Array.from(object [mapFunction [this]])` Creates array from iterator or array-like object
+
+### Map, Set, WeakMap, WeakSet
+
+
 
