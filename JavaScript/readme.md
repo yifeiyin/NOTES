@@ -50,8 +50,16 @@ JavaScript Notes
         1. [Other Things](#other-things)
     1. [Iterables](#iterables)
     1. [Map, Set, WeakMap, WeakSet](#map,-set,-weakmap,-weakset)
+        1. [Map](#map)
+        1. [Set](#set)
+        1. [WeakMap, WeakSet](#weakmap,-weakset)
+    1. [Object.keys ,values, entries](#object.keys-,values,-entries)
+    1. [Destructuring Assignment](#destructuring-assignment)
+    1. [Date and Time](#date-and-time)
+    1. [JSON](#json)
 
 <!-- /TOC -->
+
 
 
 
@@ -613,6 +621,97 @@ JavaScript Notes
 - `Array.from(object [mapFunction [this]])` Creates array from iterator or array-like object
 
 ### Map, Set, WeakMap, WeakSet
+#### Map
+- Like a object where it stores key-value pairs
+- Map can use objects as keys!!
+- Map use `===` to compare objects (at least think of it this way)
+- Use `new Map()` `.set(key, value)` `.get(key)` `.has(key)` `.delete(key)` `clear()` `.size()`
+- `for..of`: `map.keys()` `map.values()` `map.entries()` (default) same as simply `map`
+- it has its own `forEach( Fn )`
 
+#### Set
+- `new Set([iterable such as array])`
+- `.add(value)` `.delete(value)` `.has(value)` `.clear()` `.size`
+- Provides `for..of` `.forEach`
+- Provides `.keys()` `.values()` `.entries()`
 
+#### WeakMap, WeakSet
+- For Set, the values will not be hold on to, garbage collection will take place when needed
+- For Map, it is similar, but only it applies to the keys, and the keys can only be objects
+- For Map, it only has these methods for technical problems: `.get(key)` `.set(key, value)` `.delete(key)` `.has(key)`
 
+### Object.keys ,values, entries
+- Implement `.keys() .values() .entries()` for map-like data structures
+- These methods for object looks different: use `Object.keys(obj)` instead. Real array will be returned (in stead of iterables)
+
+### Destructuring Assignment
+- Array
+    ```js
+    let [a, b, c] = "abc";  // with iterables
+    let [a, , c] = [A, B, C]  // skipping elements
+    let [name1, name2, ...rest] = [A, B, C, D, E, F] // get the rest as array
+    let [a = "A", b = "B"] = [A]  // default values
+
+- Object
+    ```js
+    let {var1, var2} = {var1: ..., var2: ...}
+    // "Extracting out some properties of the object using its name"
+
+    let {width: w, height: h, title} = options; 
+    // "what: goesWhere"
+
+    let {width: w = prompt("width?") } = options;  // Default values
+
+    // [!] When used without let keyword, put whole statement inside parentheses
+    ({width: w, height: h, title} = options);  
+    ```
+
+- Nested
+- For function parameters
+    ```js
+    function showMenu({
+        title = "Untitled",
+        width: w = 100,  // width goes to w
+        height: h = 200, // height goes to h
+        items: [item1, item2] // items first element goes to item1, second to item2
+        }) {
+        alert( `${title} ${w} ${h}` ); // My Menu 100 200
+        alert( item1 ); // Item1
+        alert( item2 ); // Item2
+    }
+
+    // General Form
+    function({
+        incomingProperty: parameterName = defaultValue
+    } [ = {}]) {
+        ...
+    } 
+    ```
+
+### Date and Time
+- `new Date([milliseconds] = now)` after the Jan 1 1070 +0000
+- `new Date("YYYY-MM-DD")` or use `Date.parse(str)` in the form of `YYYY-MM-DDTHH:mm:ss.sssZ, T is delimiter, Z as UTC+0, can be replaced with +-hh:mm`
+- `new Date(YYYY, M, D, H, M, S, MS)`
+- `.getFullYear()` `.getMonth()` `.getDate()` `,getHours/Minutes/Seconds/Milliseconds()`
+- `setFullYear(year [, month, date])`
+- `setMonth(month [, date])`
+- `setDate(date)`
+- `setHours(hour [, min, sec, ms])`
+- `setMinutes(min [, sec, ms])`
+- `setSeconds(sec [, ms])`
+- `setMilliseconds(ms)`
+- `setTime(milliseconds)` (sets the whole date by milliseconds since 01.01.1970 UTC)
+- It auto corrects inputs
+- When converted to numbers, is equivalent to `.getTime()`, yields milliseconds
+- When subtracted, yields difference in ms
+- `Date.now()` <-> `new Date().getTime()`
+
+### JSON
+- functions, symbolic properties, undefined are ignored
+- `JSON.stringify(obj [, replacer, space])`
+    - `replacer`: pass an array of strings representing key names; nested objects keys also count
+    - Or, `replacer`: a function `(key, value) => replacedValue`; it will also receive the object itself at the beginning, with `""` as key
+    - `space`: number of spaces for the output indent
+- Can implement `.toJSON() -> str` to customizes json output
+- `JSON.parse(str [, reviver])`
+    - `reviver`: takes a function `(key, value) -> transformedValue` 
