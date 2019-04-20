@@ -715,3 +715,43 @@ JavaScript Notes
 - Can implement `.toJSON() -> str` to customizes json output
 - `JSON.parse(str [, reviver])`
     - `reviver`: takes a function `(key, value) -> transformedValue` 
+
+
+## Advanced Working with Functions
+
+### Rest Parameter and Spread Operator
+- Use `...array` to spread them
+- Use `function max(a, b, ...rest)` to get rest parameters
+- Can also use `arguments` inside a function (excluding arrow function) to get arguments, it is array-like, iterable, but not array
+
+
+### Closures
+- Each function will have a hidden property containing its lexical environment, which has a reference to the outer environment
+- When a function is called, it will search for variables from its own environment first and layer by layer out
+
+### Global Objects
+- use `type="module"` in script tag to isolate the script from the global window object
+
+### Function object, NFE
+- `func.name` will return the function's name
+- `func.length` will return the number of parameters of the functions, without rest parameter
+- "polymorphism" when do different things according to the arguments
+- Can add properties to functions
+- Give the function expression a name (Named Function Expression), so that the function can reference itself internally, in case the variable got reassigned
+
+### new Function
+- `new Function( ... argument names ..., function body)` all of the arguments are string
+- Can also be `new Function('a,b,c', return a+b+c')`
+- Functions created this way will capture the global one as its lexical environment
+
+### Scheduling
+- `let timerId = setTimeout(func/code, [delay in ms], [arg1], [arg2], ...)`
+- `clearTimeout(timerId)`
+- Same but run by schedule: `setInterval(...)` `clearInterval(...)`
+- Use `setTimeout(codeToRun, 0)` or simply `setTimeout(codeToRun)` to run something asynchronously
+
+### Decorators and forwarding, call/apply
+- Can write a function that creates a cached version of any functions
+- When used for functions of functions, need to provide `this` context, use `funcName.apply(context, argsAsArray)`
+- Use `func.apply()` for argument arrays; use `func.call()` for iterable or array arguments with spread operator
+- When `arguments.join()` does not work, use `[].join.call(arguments)`
