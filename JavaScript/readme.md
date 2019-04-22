@@ -57,8 +57,24 @@ JavaScript Notes
     1. [Destructuring Assignment](#destructuring-assignment)
     1. [Date and Time](#date-and-time)
     1. [JSON](#json)
+1. [Advanced Working with Functions](#advanced-working-with-functions)
+    1. [Rest Parameter and Spread Operator](#rest-parameter-and-spread-operator)
+    1. [Closures](#closures)
+    1. [Global Objects](#global-objects)
+    1. [Function object, NFE](#function-object,-nfe)
+    1. [new Function](#new-function)
+    1. [Scheduling](#scheduling)
+    1. [Decorators and forwarding, call/apply](#decorators-and-forwarding,-call/apply)
+    1. [Function Binding, Currying and Partials](#function-binding,-currying-and-partials)
+1. [Object Properties Configuration](#object-properties-configuration)
+    1. [Property Flags and Descriptors](#property-flags-and-descriptors)
+    1. [Sealing an Object Globally](#sealing-an-object-globally)
+    1. [Property Getters, Setters](#property-getters,-setters)
+1. [Prototypes, Inheritance](#prototypes,-inheritance)
+    1. [Prototypal Inheritance](#prototypal-inheritance)
 
 <!-- /TOC -->
+
 
 
 
@@ -755,3 +771,46 @@ JavaScript Notes
 - When used for functions of functions, need to provide `this` context, use `funcName.apply(context, argsAsArray)`
 - Use `func.apply()` for argument arrays; use `func.call()` for iterable or array arguments with spread operator
 - When `arguments.join()` does not work, use `[].join.call(arguments)`
+
+### Function Binding, Currying and Partials
+- `let sayHi = user.sayHi.bind(user);` gets a callable thing which, when being called, will call the original function with correct this context
+- Can also fixes some arguments for a function
+    ```js
+    function mul(a, b) { return a * b; }
+    let double = mul.bind(null, 2);
+    ```
+- **Currying**: Transform a function `f(a, b, c)` into callable as `f(a)(b)(c)`
+
+
+## Object Properties Configuration
+
+### Property Flags and Descriptors
+- Each property has flags, `writable` `enumerable` `configurable`
+- Use `Object.getOwnPropertyDescriptor(obj, propertyName)` to get; will get a descriptor object 
+- use `Object.defineProperty(obj, propertyName, descriptor)` to set new property or change property descriptor. When creating new property, use `value: ...` to set the value, property configurations not listed are default to be false
+- `writable` when false, the value is read only
+- `enumerable` when false, the key will not appear in `for..in` or `Object.keys(obj)`
+- `configurable` when false, the object property cannot be configured, this is a one-way operation
+- `Object.defineProperties(obj, descriptors)`, where `descriptors` is a object with key as name, value as descriptor.
+- `Object.getOwnPropertyDescriptors(obj)` might be useful sometimes
+
+### Sealing an Object Globally
+- `Object.preventExtensions(obj)` forbids addition of new properties
+- `Object.seal(obj)` sets `configurable: false` for all existing proeprties
+- `Object.freeze(obj)` 
+- Tests for above: `Object.isExtensible() .isSealed() .isFrozen()`
+
+### Property Getters, Setters
+    ```js
+    let obj = {
+        get fullName() { ... },
+        set fullName(value) { ... }
+    }
+    ```
+- Properties that are created like these are called *accessor properties*; other normal properties are called *data properties*.
+
+
+## Prototypes, Inheritance
+
+### Prototypal Inheritance
+
