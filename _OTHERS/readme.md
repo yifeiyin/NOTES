@@ -3,4 +3,4 @@
 #### What is this folder for?
 
 This folder contains other miscellaneous coding-related things:
-temporary memos, enviornment setups, etc.
+temporary memos, environment setups, etc.

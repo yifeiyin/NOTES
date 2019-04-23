@@ -1,6 +1,5 @@
 # Python Notes
 
-
 Jump to chapter:
 [1-7](#chapter-1-7) · [8](#chapter-8) · [9](#chapter-9) · [10](#chapter-10) · [11](#chapter-11) · [12](#chapter-12) · [13](#chapter-13) · [14](#chapter-14) · [15-16](#chapter-15-16) · 17 · 18 · [19](#chapter-19) · [20](#chapter-20) · [21](#chapter-21) · 22 · [23](#chapter-23) · 24 · 25 · 26 · 27
 

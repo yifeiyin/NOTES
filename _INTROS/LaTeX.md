@@ -10,8 +10,8 @@ Download here: [LaTeX Project](https://www.latex-project.org/get/)
 
 ## Configure in Sublime Text
 
-### [install Package Control](https://packagecontrol.io/installation)   
-### [install LaTeXTools](https://latextools.readthedocs.io/en/latest/install/)  
+### [install Package Control](https://packagecontrol.io/installation)
+### [install LaTeXTools](https://latextools.readthedocs.io/en/latest/install/)
 ^ install Skim, imagemagick, ghostscript as instruted
 
 <!---
@@ -25,16 +25,16 @@ Download here: [LaTeX Project](https://www.latex-project.org/get/)
 
     Software: Skim (for better forward and backward search)
 
-    Setup ImageMagick and Ghostscript (for inline math equation preview)  
+    Setup ImageMagick and Ghostscript (for inline math equation preview)
     Read and follow intructions on LaTeXTools website.
     `brew install imagemagick`
-    `brew install ghostscript` 
+    `brew install ghostscript`
 -->
 
 Use LaTeXTools "Check System" to check
 (Sublime Text menu > Preferences > Package Settings > LaTeXTools > Check System)
 
-To change Math equation inline preview settings, also see [here](https://latextools.readthedocs.io/en/latest/settings/#preview-settings).  
+To change Math equation inline preview settings, also see [here](https://latextools.readthedocs.io/en/latest/settings/#preview-settings).
 You can change its size, color, for *all equations* or *no equations* or *only standalone equations*.
 
 ## Other Color Themes, Tools
@@ -46,7 +46,5 @@ Package Install: DistractionFreeWindow, MaxPane, Dictionaries(?)
 ## Tutorials
 
 [The Not So Short LaTeX Tutorial](https://tobi.oetiker.ch/lshort/lshort.pdf)
-
 [Wiki books: LaTeX Basics](https://en.wikibooks.org/wiki/LaTeX/Basics)
-
 [Oeis Wiki: LaTeX Math Symbols](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)

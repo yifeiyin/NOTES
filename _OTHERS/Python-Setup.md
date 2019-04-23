@@ -4,9 +4,9 @@ Use Package Control
 >
 > These notes are no longer being maintained and are here for archive purpose only. Some usage may be deprecated in current standard.
 
-### Install: 
+### Install:
 
-* Sublime REPL 
+* Sublime REPL
 * SublimeCodeIntel (for code completion)
 * MagicPython (for better python highlighting)
 
@@ -31,14 +31,14 @@ Use Package Control
         "command": "run_existing_window_command",
         "args": {
             "id": "repl_python_run",
-            "file": "config/Python/Main.sublime-menu" 
+            "file": "config/Python/Main.sublime-menu"
         },
         "context": [{ "key": "selector", "operator": "equal", "operand": "source.python" }]
     },
  // ////// ctrl c -> send SIGINT, aka KeyboardInterrupt
     {
-        "keys": ["ctrl+c"], 
-        "command": "subprocess_repl_send_signal", 
+        "keys": ["ctrl+c"],
+        "command": "subprocess_repl_send_signal",
         "args": {"signal": 2},
         "context": [{ "key": "setting.repl", "operator": "equal", "operand": true }]
     },
@@ -58,7 +58,6 @@ Use Package Control
 ```
 
 ## Other cool packages
-
 * ayu, command palette is super cool, but I don't like other stuff very much
 * a file icon, very cool!
 * colorsublime, preview color themes
