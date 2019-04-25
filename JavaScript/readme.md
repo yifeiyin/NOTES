@@ -387,7 +387,7 @@ JavaScript Notes
     - They both check if two references are pointing at the same object
 - Cloning
     - Use a for loop: `let src = {...}; let clone = {}; for (let k in src) { clone[k] = src[k]; }`
-    - Use `Object.assign`: 
+    - Use `Object.assign`:
         - Of form `Object.assign(dest[, src1, src2, src3...])`, returns `dest`
         - Overwrites existing properties
         - `let clone = Object.assign({}, user);`
@@ -519,7 +519,7 @@ JavaScript Notes
 - Return statements in constructors
     - (Of course, it usually does not have a return statement)
     - If `return` is called with a object, the object is returned
-    - If `return` is called with a primitive, the primitive is ingored and `this` object is returned
+    - If `return` is called with a primitive, the primitive is ignored and `this` object is returned
 
 
 
@@ -581,12 +581,12 @@ JavaScript Notes
 - `.toLowerCase()` `.toUpperCase()`
 #### Finding, Testing, Slicing
 - `.indexOf(substr [, startingPos])`, will return -1 if not found. Also `.lastIndexOf(...)`
-    - TRICK: Use bitwise or to test if a value is -1 or not: `mystr.~indexOf("test") <--> "if found"`
+    - TRICK: Use bitwise or to test if a value is -1 or not: `~mystr.indexOf("test") <--> "if found"`
 - `includes` `startsWith` `endsWith`
 - `.slice(start [, end])` `.substring(start [, end])` `.substr(start [, length])`
 #### Unicode Encoding
 - `.codePointAt(pos)` returns the unicode number of the character at position pos in the string
-- String.fromCodePoint(code)` returns the character by providing unicode number
+- `String.fromCodePoint(code)` returns the character by providing unicode number
 - To "clean up" unicode characters, use `.normalize()`
 
 ### Arrays
@@ -595,7 +595,7 @@ JavaScript Notes
 - Use `.length` to get length
 - Supports `shift` `unshift` `push` `pop`, supports adding multiple items at a time
 - It is a kind of object
-- When printed, it is comma seperated values
+- When printed, it is comma separated values
 #### Adding, Accessing, Finding Methods
 - `.splice(index [deleteCount [elementToAdd ... ]]) -> itemRemovedAsArray`
 - `.slice(start [end])`
@@ -673,13 +673,13 @@ JavaScript Notes
     let {var1, var2} = {var1: ..., var2: ...}
     // "Extracting out some properties of the object using its name"
 
-    let {width: w, height: h, title} = options; 
+    let {width: w, height: h, title} = options;
     // "what: goesWhere"
 
     let {width: w = prompt("width?") } = options;  // Default values
 
     // [!] When used without let keyword, put whole statement inside parentheses
-    ({width: w, height: h, title} = options);  
+    ({width: w, height: h, title} = options);
     ```
 
 - Nested
@@ -701,7 +701,7 @@ JavaScript Notes
         incomingProperty: parameterName = defaultValue
     } [ = {}]) {
         ...
-    } 
+    }
     ```
 
 ### Date and Time
@@ -730,7 +730,7 @@ JavaScript Notes
     - `space`: number of spaces for the output indent
 - Can implement `.toJSON() -> str` to customizes json output
 - `JSON.parse(str [, reviver])`
-    - `reviver`: takes a function `(key, value) -> transformedValue` 
+    - `reviver`: takes a function `(key, value) -> transformedValue`
 
 
 ## Advanced Working with Functions
@@ -786,7 +786,7 @@ JavaScript Notes
 
 ### Property Flags and Descriptors
 - Each property has flags, `writable` `enumerable` `configurable`
-- Use `Object.getOwnPropertyDescriptor(obj, propertyName)` to get; will get a descriptor object 
+- Use `Object.getOwnPropertyDescriptor(obj, propertyName)` to get; will get a descriptor object
 - use `Object.defineProperty(obj, propertyName, descriptor)` to set new property or change property descriptor. When creating new property, use `value: ...` to set the value, property configurations not listed are default to be false
 - `writable` when false, the value is read only
 - `enumerable` when false, the key will not appear in `for..in` or `Object.keys(obj)`
@@ -797,7 +797,7 @@ JavaScript Notes
 ### Sealing an Object Globally
 - `Object.preventExtensions(obj)` forbids addition of new properties
 - `Object.seal(obj)` sets `configurable: false` for all existing proeprties
-- `Object.freeze(obj)` 
+- `Object.freeze(obj)`
 - Tests for above: `Object.isExtensible() .isSealed() .isFrozen()`
 
 ### Property Getters, Setters
@@ -813,4 +813,48 @@ JavaScript Notes
 ## Prototypes, Inheritance
 
 ### Prototypal Inheritance
+- `[[Prototype]]`
+- Set `obj.__proto__` to another object to inherits from another object
+- Each object can only have one prototype
+- `this` context will be the object before dot
+
+### F.prototype
+- Can set `.prototype` for object constructor functions: when new object is created ie `new F()`, the resulting object will have `__proto__ = ` the parent object
+- We can borrow some methods from other object by setting
+
+### SKIPPED Prototype methods, objects without __proto__
+### SKIPPED Getting all properties
+
+## Classes
+
+```js
+class User {
+    var isAdmin = false;
+    constructor(name) { this.name = name };
+    sayHi() { console.log(this.name); }
+}
+
+class SuperUser extends User {
+    constructor(name, level) { super(name); this.level = level; }
+    saySuper() { console.log("super"); }
+    sayHi() { super.sayHi(); console.log("and super"); }
+}
+```
+
+### Class Inheritance
+- `[[HomeObject]]` comes to rescue when calling `super`
+
+- Static Methods are those that belong to the class, not any particular objects
+    ```js
+    class User {
+        static compareUser(a, b) { return a.id - b.id; }
+        ...
+    }
+
+    // Equivalent to
+    // ... (other declarations here)
+    User.compareUser = function(a, b) { return a.id - b.id; };
+    ```
+
+
 
