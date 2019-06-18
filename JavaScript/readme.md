@@ -856,5 +856,42 @@ class SuperUser extends User {
     User.compareUser = function(a, b) { return a.id - b.id; };
     ```
 
+## Error Handling
+### Try...Catch
+```js
+try {
 
+} catch (err) {
+    if (err.name = 'SyntaxError') {
+        console.log(err.message);
+        err.stack = "<nested calls>"; // Non-standard, but is supported by most env
+        // ...
+    } else if (err instanceof TypeError) { // Can also use this
+        throw err;
+    }
+
+} finally {
+    // ...
+}
+```
+
+### Custom Errors, Extending Error
+```js
+// The "pseudocode" for the built-in Error class defined by JavaScript itself
+class Error {
+  constructor(message) {
+    this.message = message;
+    this.name = "Error"; // (different names for different built-in error classes)
+    this.stack = "<nested calls>"; // non-standard, but most environments support it
+  }
+}
+
+// To extend:
+class ValidationError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = this.constructor.name;
+    }
+}
+```
 
