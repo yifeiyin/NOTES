@@ -895,3 +895,44 @@ class ValidationError extends Error {
 }
 ```
 
+## Promises, Async, Await
+### Promise
+```js
+let promise = new Promise(function(resolve, reject) {
+    // do something here
+});
+```
+
+- The promise takes in one function, which:
+    - has two arguments, returns nothing. The two arguments:
+    - first one, usually called resolve, second one, usually called reject
+- We should call appropriate function when we are done
+    - We should only call function once, any further call will be ignored
+
+- `promise.then(handleSuccess, handleError)`, when only interested in success, provide just first argument
+- `promise.catch()` handles error
+- `promise.finally()` runs when the promise is settled
+
+### Promise Chaining
+- Can have a return statement in handler, the return value will become the result of the promise returned
+- Or, can return a Promise in the handler. Any further `.then` will not be executed until the new promise is resolved
+- `Thenable` object
+
+### Error Handling
+- The promise executor is implicitly wrapped in try-catch block
+- `throw new Error()` is equivalent to `reject(new Error())`
+- When there is an unhandled rejection,  the engine will generate a global error `unhandledrejection`
+- In brower environment, we can use `window.addEventListener('unhandledrejection', function(event) { ... }`
+
+### Promise API
+- `Promise.resolve(value)` <--> `new Promise((resolve, reject) => resolve(value))`
+- `Promise.reject(error)` <--> `new Promise((resolve, reject) => reject(error))`
+- `Promise.all([...promises...])` returns a list of resolved values, in the order they appear in the array, or rejects immediately with the error and ignores other promises
+- `Promise.allSettled(promises)` (recently added)
+- `Promise.race(promises)`
+
+
+
+
+
+
