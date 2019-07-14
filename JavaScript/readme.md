@@ -72,8 +72,25 @@ JavaScript Notes
     1. [Property Getters, Setters](#property-getters,-setters)
 1. [Prototypes, Inheritance](#prototypes,-inheritance)
     1. [Prototypal Inheritance](#prototypal-inheritance)
+    1. [F.prototype](#f.prototype)
+    1. [SKIPPED Prototype methods, objects without __proto__](#skipped-prototype-methods,-objects-without-__proto__)
+    1. [SKIPPED Getting all properties](#skipped-getting-all-properties)
+1. [Classes](#classes)
+    1. [Class Inheritance](#class-inheritance)
+1. [Error Handling](#error-handling)
+    1. [Try...Catch](#try...catch)
+    1. [Custom Errors, Extending Error](#custom-errors,-extending-error)
+1. [Promises, Async, Await](#promises,-async,-await)
+    1. [Promise](#promise)
+    1. [Promise Chaining](#promise-chaining)
+    1. [Error Handling](#error-handling)
+    1. [Promise API](#promise-api)
+    1. [Promisification](#promisification)
+    1. [Microtasks](#microtasks)
+    1. [Async/Await](#async/await)
 
 <!-- /TOC -->
+
 
 
 
@@ -931,8 +948,27 @@ let promise = new Promise(function(resolve, reject) {
 - `Promise.allSettled(promises)` (recently added)
 - `Promise.race(promises)`
 
+### Promisification
+- It means the conversion of a function that accepts a callback into a function that returns a promise
+- Note: use promisify only when want to use async/await. Callback can be technically called many times but a promise can be only resolved once
+- In nodeJS, there is util.
 
+### Microtasks
+- The engine will takes all tasks, put them in a first-in-first-out queue, execute them only when the script is idle
 
+### Async/Await
+- adding keyword `async` before a function will ensure that the function returns a promise, and wrap any other values in a `Promise.resolved()`
+- Use `let result = await promise;` to make the program pause, until the promise is resolved.
+- Note: `await` only works *inside* `async` functions
+- When desired, can wrap code inside an anonymous async function, like this
+    ```js
+    (async () => {
+    let response = await fetch('/article/promise-chaining/user.json');
+    let user = await response.json();
+    ...
+    })();
+    ```
+- When the function being `await`-ed is not resolved, throws an error, use `try...catch` to catch the error
 
 
 
