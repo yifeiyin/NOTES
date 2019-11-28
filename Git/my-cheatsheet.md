@@ -68,5 +68,9 @@
 - `index` refers to the staging area
 - `working tree` refers to the working directory
 
-<!-- TODO -->
-<!-- git reset, checkout -B -->
+
+
+## Miscellaneous
+
+- `git add -p` `--patch` (`--interactive` implied) to manually select hunks
+
